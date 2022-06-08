@@ -1,0 +1,42 @@
+api 
+----------------------------------------------
+1.hang
+/hang (get)
+/hang/:id (get)
+/hang (post { tenHang : 'adas', chietKhau: 123, giaMoiShow: 123} )
+/hang/:id (update { tenHang : 'adas', chietKhau: 123, giaMoiShow: 123})
+/hang/:id (delete)
+----------------------------------------------
+2.casi 
+dto: {
+  hoTen: string;
+  sdt: string;
+  CMND: string;
+  diaChi: string;
+  gioiTinh: string;
+  maHang: string;
+  moTa: string;
+  hinhAnh: string;
+  ngaySinh: string;
+  doanhThu: int,
+  luongCB: int,
+}
+/casi (get)
+/casi/:id (get)
+/casi (post {dto} )
+/casi/:id (update {dto})
+/casi/:id (delete)
+----------------------------------------------
+3.baihat
+dto: {
+ tenBH: string;
+  hinhAnh: string;
+  mp4: string;
+  maCS: string;
+ gia: int	
+}
+/baihat (get)
+/baihat/:id (get)
+/baihat (post {dto} )
+/baihat/:id (update {dto})
+/baihat/:id (delete)
