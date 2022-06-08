@@ -1,0 +1,99 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["filterJson", "referentialIntegrity", "fullTextSearch"]
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model KhachHang {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  taiKhoan String @unique
+  hoTen String
+  matKhau String
+  email String 
+  sdt String
+  ngaySinh DateTime 
+  diaChi String
+  doanhThu Int
+}
+model NhanVien{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  taiKhoan String @unique
+  tenNV String
+  matKhau String
+  email String 
+  sdt String
+  ngaySinh DateTime 
+  diaChi String
+  cmnd String
+  gioiTinh String
+}
+model Hang{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  tenHang String 
+  chietKhau Int
+  giaMoiShow Int
+}
+model Casi{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  hoTen String
+  sdt String
+  ngaySinh String 
+  CMND String
+  diaChi String
+  doanhThu Int
+  gioiTinh String 
+  maHang String
+  luongCB Int
+  ngayVao DateTime @default(now())
+  moTa String 
+  hinhAnh String
+}
+model BaiHat{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  tenBH String
+  ngayPhatHanh DateTime @default(now())
+  hinhAnh String 
+  mp4 String
+  luotView Int
+  luotMua Int
+  gia Int
+  maCS String
+}
+model Mua{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  ngayMua DateTime @default(now())
+  gia Int
+  maKh String
+  maBH String
+}
+model showDien{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  ngayBatDau DateTime @default(now())
+  diaDiem String
+  ghiChu String
+  ngayKetThuc DateTime @default(now())
+  tinhTrang String
+  chiPhi Int
+  ngayDatShow DateTime @default(now())
+}
+model CaSiTrongShow{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  maShow String
+  thuTu Int
+  tinhTrang String
+  ghiChu String
+}
+model TienLuongCaSi{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  thangGhiNhan Int
+  namGhiNhan Int
+  tienShow Int
+  ghiChu String
+  tienBaiHat Int
+  luong Int
+  tinhTrang String
+}
