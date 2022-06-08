@@ -5,6 +5,8 @@ import { HttpModule } from '@nestjs/axios';
 import { HangModule } from './hang/hang.module';
 import { CasiModule } from './casi/casi.module';
 import { BaihatModule } from './baihat/baihat.module';
+import { NhanvienModule } from './nhanvien/nhanvien.module';
+import { KhachhangModule } from './khachhang/khachhang.module';
 
 @Module({
   imports: [
@@ -16,6 +18,8 @@ import { BaihatModule } from './baihat/baihat.module';
     HangModule,
     CasiModule,
     BaihatModule,
+    NhanvienModule,
+    KhachhangModule,
   ],
 })
 export class AppModule {}

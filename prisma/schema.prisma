@@ -10,26 +10,26 @@ datasource db {
 
 model KhachHang {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  taiKhoan String @unique
-  hoTen String
-  matKhau String
-  email String 
-  sdt String
-  ngaySinh DateTime 
-  diaChi String
-  doanhThu Int
+  taiKhoan String? @unique
+  hoTen String?
+  matKhau String?
+  email String? 
+  sdt String?
+  ngaySinh DateTime? 
+  diaChi String?
+  doanhThu Int?
 }
 model NhanVien{
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  taiKhoan String @unique
-  tenNV String
+  taiKhoan String? @unique
+  tenNV String?
   matKhau String
-  email String 
-  sdt String
-  ngaySinh DateTime 
-  diaChi String
-  cmnd String
-  gioiTinh String
+  email String ?
+  sdt String?
+  ngaySinh DateTime? 
+  diaChi String?
+  cmnd String?
+  gioiTinh String?
 }
 model Hang{
   id String @id @default(auto()) @map("_id") @db.ObjectId
