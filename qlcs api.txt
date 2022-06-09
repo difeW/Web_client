@@ -64,3 +64,5 @@ dto: {
 /showdien (post {dto} )
 /showdien/:id (update {dto})
 /showdien/:id (delete)
+/showdien/accept/:id (patch)
+/showdien/cancel/:id (patch)

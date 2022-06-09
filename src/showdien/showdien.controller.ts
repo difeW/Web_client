@@ -45,4 +45,13 @@ export class ShowdienController {
   deleteShow(@Param('id') id: string) {
     return this.show.deleteShow(id);
   }
+
+  @Patch('/accept/:id')
+  verifiedShow(@Param('id') id: string) {
+    return this.show.verifiedShow(id);
+  }
+  @Patch('/cancel/:id')
+  delShow(@Param('id') id: string) {
+    return this.show.toCancel(id);
+  }
 }
