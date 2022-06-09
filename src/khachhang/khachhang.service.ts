@@ -1,3 +1,4 @@
+import { KhachHangDto } from './dto/khachhang.dto';
 import { Injectable } from '@nestjs/common';
 import { AuthDto } from 'src/nhanvien/dto/auth.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
@@ -57,5 +58,43 @@ export class KhachhangService {
       mess: 'dang nhap thanh cong',
       makh: user.id,
     };
+  }
+
+
+
+  async getAllkhachHang() {
+    return await this.prisma.khachHang.findMany();
+  }
+  async getkhachHangById(id: string) {
+    return await this.prisma.khachHang.findUnique({
+      where: {
+        id: id,
+      },
+    });
+  }
+
+  async addkhachHang(luong: KhachHangDto) {
+    return await this.prisma.khachHang.create({
+      data: {
+        ...luong,
+      },
+    });
+  }
+  async updatekhachHang(luong: KhachHangDto, id: string) {
+    return await this.prisma.khachHang.update({
+      data: {
+        ...luong,
+      },
+      where: {
+        id: id,
+      },
+    });
+  }
+  async deletekhachHang(id: string) {
+    return await this.prisma.khachHang.delete({
+      where: {
+        id: id,
+      },
+    });
   }
 }

@@ -1,3 +1,4 @@
+import { NhanvienDto } from './dto/nhanvien.dto';
 import { AuthDto } from './dto/auth.dto';
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
@@ -57,5 +58,41 @@ export class NhanvienService {
       mess: 'dang nhap thanh cong',
       manv: user.id,
     };
+  }
+
+  async getAllnhanVien() {
+    return await this.prisma.nhanVien.findMany();
+  }
+  async getnhanVienById(id: string) {
+    return await this.prisma.nhanVien.findUnique({
+      where: {
+        id: id,
+      },
+    });
+  }
+
+  async addnhanVien(luong: NhanvienDto) {
+    return await this.prisma.nhanVien.create({
+      data: {
+        ...luong,
+      },
+    });
+  }
+  async updatenhanVien(luong: NhanvienDto, id: string) {
+    return await this.prisma.nhanVien.update({
+      data: {
+        ...luong,
+      },
+      where: {
+        id: id,
+      },
+    });
+  }
+  async deletenhanVien(id: string) {
+    return await this.prisma.nhanVien.delete({
+      where: {
+        id: id,
+      },
+    });
   }
 }

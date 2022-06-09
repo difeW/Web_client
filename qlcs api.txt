@@ -42,12 +42,44 @@ dto: {
 /baihat/:id (delete)
 ----------------------------------------------
 4.nhanvien
+dto: {
+  taiKhoan: string;
+  tenNV: string;
+  matKhau: string;
+  email: string;
+  sdt: string;
+  ngaySinh: string;
+  diaChi: string;
+  cmnd: string;
+  gioiTinh: string;
+}
 /nhanvien/dangky (post {taiKhoan: '123',matKhau: '123' })
 /nhanvien/dangnhap (post {taiKhoan: '123',matKhau: '123' })
+
+/nhanvien (get)
+/nhanvien/:id (get)
+/nhanvien (post {dto} )
+/nhanvien/:id (update {dto})
+/nhanvien/:id (delete)
 ----------------------------------------------
 5.khachhang
+dto:{
+  taiKhoan: string;
+  hoTen: string;
+  matKhau: string;
+  email: string;
+  sdt: string;
+  ngaySinh: string;
+  diaChi: string;
+}
 /khachhang/dangky (post {taiKhoan: '123',matKhau: '123' })
 /khachhang/dangnhap (post {taiKhoan: '123',matKhau: '123' })
+
+/khachhang (get)
+/khachhang/:id (get)
+/khachhang (post {dto} )
+/khachhang/:id (update {dto})
+/khachhang/:id (delete)
 ----------------------------------------------
 6.shodien 
 dto: {
