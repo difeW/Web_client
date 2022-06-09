@@ -8,4 +8,6 @@ export class BaiHatDto {
   mp4: string;
   @IsString()
   maCS: string;
+  @IsString()
+  ngayPhatHanh: string;
 }

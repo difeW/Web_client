@@ -48,3 +48,19 @@ dto: {
 5.khachhang
 /khachhang/dangky (post {taiKhoan: '123',matKhau: '123' })
 /khachhang/dangnhap (post {taiKhoan: '123',matKhau: '123' })
+----------------------------------------------
+6.shodien 
+dto: {
+  ngayBatDau: string;
+  diaDiem: string;
+  ghiChu: string;
+  ngayKetThuc: string;
+  tinhTrang: string;
+  ngayDatShow: string;
+  chiPhi : int
+}
+/showdien (get)
+/showdien/:id (get)
+/showdien (post {dto} )
+/showdien/:id (update {dto})
+/showdien/:id (delete)

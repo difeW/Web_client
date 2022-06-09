@@ -1,6 +1,4 @@
-import {
-  IsString,
-} from 'class-validator';
+import { IsString } from 'class-validator';
 export class CasiDto {
   @IsString()
   hoTen: string;
@@ -20,4 +18,6 @@ export class CasiDto {
   hinhAnh: string;
   @IsString()
   ngaySinh: string;
+  @IsString()
+  ngayVao: string;
 }

@@ -48,14 +48,14 @@ model Casi{
   gioiTinh String 
   maHang String
   luongCB Int
-  ngayVao DateTime @default(now())
+  ngayVao String
   moTa String 
   hinhAnh String
 }
 model BaiHat{
   id String @id @default(auto()) @map("_id") @db.ObjectId
   tenBH String
-  ngayPhatHanh DateTime @default(now())
+  ngayPhatHanh String
   hinhAnh String 
   mp4 String
   luotView Int
@@ -65,20 +65,20 @@ model BaiHat{
 }
 model Mua{
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  ngayMua DateTime @default(now())
+  ngayMua String
   gia Int
   maKh String
   maBH String
 }
 model showDien{
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  ngayBatDau DateTime @default(now())
+  ngayBatDau String
   diaDiem String
   ghiChu String
-  ngayKetThuc DateTime @default(now())
+  ngayKetThuc String
   tinhTrang String
   chiPhi Int
-  ngayDatShow DateTime @default(now())
+  ngayDatShow String
 }
 model CaSiTrongShow{
   id String @id @default(auto()) @map("_id") @db.ObjectId

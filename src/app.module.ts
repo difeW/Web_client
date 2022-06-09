@@ -7,6 +7,7 @@ import { CasiModule } from './casi/casi.module';
 import { BaihatModule } from './baihat/baihat.module';
 import { NhanvienModule } from './nhanvien/nhanvien.module';
 import { KhachhangModule } from './khachhang/khachhang.module';
+import { ShowdienModule } from './showdien/showdien.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { KhachhangModule } from './khachhang/khachhang.module';
     BaihatModule,
     NhanvienModule,
     KhachhangModule,
+    ShowdienModule,
   ],
 })
 export class AppModule {}
