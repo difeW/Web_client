@@ -83,6 +83,7 @@ model showDien{
 model CaSiTrongShow{
   id String @id @default(auto()) @map("_id") @db.ObjectId
   maShow String
+  maCS String
   thuTu Int
   tinhTrang String
   ghiChu String

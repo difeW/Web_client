@@ -8,6 +8,9 @@ import { BaihatModule } from './baihat/baihat.module';
 import { NhanvienModule } from './nhanvien/nhanvien.module';
 import { KhachhangModule } from './khachhang/khachhang.module';
 import { ShowdienModule } from './showdien/showdien.module';
+import { MuaModule } from './mua/mua.module';
+import { TienluongcasiModule } from './tienluongcasi/tienluongcasi.module';
+import { CasitrongshowModule } from './casitrongshow/casitrongshow.module';
 
 @Module({
   imports: [
@@ -22,6 +25,9 @@ import { ShowdienModule } from './showdien/showdien.module';
     NhanvienModule,
     KhachhangModule,
     ShowdienModule,
+    MuaModule,
+    TienluongcasiModule,
+    CasitrongshowModule,
   ],
 })
 export class AppModule {}

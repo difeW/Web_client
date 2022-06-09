@@ -66,3 +66,46 @@ dto: {
 /showdien/:id (delete)
 /showdien/accept/:id (patch)
 /showdien/cancel/:id (patch)
+----------------------------------------------
+7.mua 
+dto :{
+  ngayMua: string;
+  maKh: string;
+  maBH: string;
+  gia : int;
+}
+/mua (get)
+/mua/:id (get)
+/mua (post {dto} )
+/mua/:id (update {dto})
+/mua/:id (delete)
+----------------------------------------------
+8.tienluongcasi
+dto :{
+  ghiChu: string;
+  tinhTrang: string;
+  thangGhiNhan: int;
+  namGhiNhan: int;
+  tienShow: int;
+  tienBaiHat: int;
+  luong: int;
+}
+/luong (get)
+/luong/:id (get)
+/luong (post {dto} )
+/luong/:id (update {dto})
+/luong/:id (delete)
+----------------------------------------------
+9.casitrongshow
+dto :{
+  maShow: string;
+  maCS: string;
+  thuTu: int;
+  tinhTrang: string;
+  ghiChu: string;
+}
+/casishow (get)
+/casishow/:id (get)
+/casishow (post {dto} )
+/casishow/:id (update {dto})
+/casishow/:id (delete)

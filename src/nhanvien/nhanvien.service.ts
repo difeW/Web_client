@@ -26,6 +26,7 @@ export class NhanvienService {
       return {
         success: true,
         mess: 'tao tai khoan thanh cong',
+        manv: user.id,
       };
     }
   }
@@ -54,6 +55,7 @@ export class NhanvienService {
     return {
       success: true,
       mess: 'dang nhap thanh cong',
+      manv: user.id,
     };
   }
 }
