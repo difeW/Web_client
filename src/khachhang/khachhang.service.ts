@@ -60,8 +60,6 @@ export class KhachhangService {
     };
   }
 
-
-
   async getAllkhachHang() {
     return await this.prisma.khachHang.findMany();
   }
@@ -96,5 +94,43 @@ export class KhachhangService {
         id: id,
       },
     });
+  }
+
+  async getListMusic(id: string) {
+    const khachhang = await this.prisma.mua.findMany({
+      where: {
+        maKH: id,
+      },
+    });
+    const baihatcus = [];
+    const baihat = await this.prisma.baiHat.findMany();
+    for await (const bh of baihat) {
+      const casi = await this.prisma.casi.findUnique({
+        where: {
+          id: bh.maCS,
+        },
+      });
+      baihatcus.push({
+        maBH: bh.id,
+        tenBH: bh.tenBH,
+        ngayPhatHanh: bh.ngayPhatHanh,
+        hinhAnh: bh.hinhAnh,
+        mp4: bh.mp4,
+        luotView: bh.luotView,
+        luotMua: bh.luotMua,
+        gia: bh.gia,
+        maCS: casi.hoTen,
+        DaMua: false,
+      });
+    }
+    console.log(khachhang);
+    for await (const kh of khachhang) {
+      for await (const bh of baihatcus) {
+        if (kh.maBH == bh.maBH) {
+          bh.DaMua = true;
+        }
+      }
+    }
+    return baihatcus;
   }
 }

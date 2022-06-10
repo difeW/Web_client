@@ -1,6 +1,14 @@
 import { KhachHangDto } from './dto/khachhang.dto';
 import { KhachhangService } from './khachhang.service';
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { AuthDto } from 'src/nhanvien/dto/auth.dto';
 
 @Controller('khachhang')
@@ -36,4 +44,8 @@ export class KhachhangController {
     return this.khachhang.deletekhachHang(id);
   }
 
+  @Post('/khachhang')
+  getListMusic(@Body('maKH') id: string) {
+    return this.khachhang.getListMusic(id);
+  }
 }

@@ -80,6 +80,7 @@ dto:{
 /khachhang (post {dto} )
 /khachhang/:id (update {dto})
 /khachhang/:id (delete)
+/khachhang/khachhang (post {maKH}) san pham nao da mua 
 ----------------------------------------------
 6.shodien 
 dto: {

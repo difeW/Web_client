@@ -4,6 +4,6 @@ import { KhachhangService } from './khachhang.service';
 
 @Module({
   controllers: [KhachhangController],
-  providers: [KhachhangService]
+  providers: [KhachhangService],
 })
 export class KhachhangModule {}

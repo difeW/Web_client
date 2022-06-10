@@ -22,6 +22,14 @@ export class MuaService {
         id: bai.maBH,
       },
     });
+    await this.prisma.baiHat.update({
+      where: {
+        id: bai.maBH,
+      },
+      data: {
+        luotMua: baihat.luotMua + 1,
+      },
+    });
     const mua = await this.prisma.mua.create({
       data: {
         ...bai,
