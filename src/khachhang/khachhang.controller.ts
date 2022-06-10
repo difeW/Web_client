@@ -45,7 +45,7 @@ export class KhachhangController {
   }
 
   @Get('/baihat/:id')
-  getListMusic(@Param('maKH') id: string) {
+  getListMusic(@Param('id') id: string) {
     return this.khachhang.getListMusic(id);
   }
 }
