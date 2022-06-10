@@ -5,11 +5,4 @@ export class caSiShowDto {
   maShow: string;
   @IsString()
   maCS: string;
-  @IsInt()
-  @Transform(({ value }) => parseInt(value))
-  thuTu: number;
-  @IsString()
-  tinhTrang: string;
-  @IsString()
-  ghiChu: string;
 }

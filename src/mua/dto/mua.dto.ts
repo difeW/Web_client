@@ -1,9 +1,7 @@
 import { IsString } from 'class-validator';
 export class MuaDto {
   @IsString()
-  ngayMua: string;
-  @IsString()
-  maKh: string;
+  maKH: string;
   @IsString()
   maBH: string;
 }

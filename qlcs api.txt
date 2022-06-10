@@ -141,3 +141,8 @@ dto :{
 /casishow (post {dto} )
 /casishow/:id (update {dto})
 /casishow/:id (delete)
+
+
+------------
+thong so tu dong
+showdien: chiphi

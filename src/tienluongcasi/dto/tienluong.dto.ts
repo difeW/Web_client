@@ -3,8 +3,6 @@ import { Transform } from 'class-transformer';
 export class TienLuongDto {
   @IsString()
   ghiChu: string;
-  @IsString()
-  tinhTrang: string;
   @IsInt()
   @Transform(({ value }) => parseInt(value))
   thangGhiNhan: number;

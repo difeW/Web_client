@@ -65,9 +65,11 @@ model BaiHat{
 }
 model Mua{
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  ngayMua String
+  thang Int
+  nam Int
+  ngay DateTime @default(now())
   gia Int
-  maKh String
+  maKH String
   maBH String
 }
 model showDien{
@@ -78,16 +80,14 @@ model showDien{
   ngayKetThuc String
   tinhTrang String
   chiPhi Int
-  ngayDatShow String
+  ngayDatShow DateTime @default(now())
   maKH String
+  tenShow String
 }
 model CaSiTrongShow{
   id String @id @default(auto()) @map("_id") @db.ObjectId
   maShow String
   maCS String
-  thuTu Int
-  tinhTrang String
-  ghiChu String
 }
 model TienLuongCaSi{
   id String @id @default(auto()) @map("_id") @db.ObjectId
@@ -97,6 +97,5 @@ model TienLuongCaSi{
   ghiChu String
   tienBaiHat Int
   luong Int
-  tinhTrang String
   maCS String
 }

@@ -10,7 +10,7 @@ export class ShowDienDto {
   @IsString()
   ngayKetThuc: string;
   @IsString()
-  ngayDatShow: string;
-  @IsString()
   maKH: string;
+  @IsString()
+  tenShow: string;
 }

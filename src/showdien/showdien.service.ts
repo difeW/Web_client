@@ -44,35 +44,82 @@ export class ShowdienService {
     });
   }
   async verifiedShow(id: string) {
-    //huy / chuaxacnhan / danhan/ daden
+    //huy / chuaxacnhan / xacnhan
     const status = await this.prisma.showDien.findUnique({
       where: {
         id: id,
       },
     });
     try {
-      if (status.tinhTrang == 'đã nhận') {
+      if (status.tinhTrang == 'chưa xác nhận') {
         await this.prisma.showDien.update({
           where: {
             id: id,
           },
           data: {
-            tinhTrang: 'đã đến',
+            tinhTrang: 'xác nhận',
           },
         });
-      } else if (status.tinhTrang == 'chưa xác nhận') {
-        await this.prisma.showDien.update({
+        const casitrongshow = await this.prisma.caSiTrongShow.findMany({
           where: {
-            id: id,
-          },
-          data: {
-            tinhTrang: 'đã nhận',
+            maShow: id,
           },
         });
+
+        for await (const casi of casitrongshow) {
+          let hangcasi = await this.prisma.casi.findUnique({
+            where: {
+              id: casi.maCS,
+            },
+          });
+          let hang = await this.prisma.hang.findUnique({
+            where: {
+              id: hangcasi.maHang,
+            },
+          });
+          const tienShow = hang.giaMoiShow;
+          const thang = new Date(status.ngayBatDau).getMonth();
+          const nam = new Date(status.ngayBatDau).getFullYear();
+          const tienluongcasi = await this.prisma.tienLuongCaSi.findFirst({
+            where: {
+              maCS: casi.maCS,
+              thangGhiNhan: thang,
+              namGhiNhan: nam,
+            },
+          });
+          if (!tienluongcasi) {
+            await this.prisma.tienLuongCaSi.create({
+              data: {
+                maCS: casi.maCS,
+                thangGhiNhan: thang,
+                namGhiNhan: nam,
+                tienShow: tienShow,
+                tienBaiHat: 0,
+                luong: hangcasi.luongCB + tienShow * (hang.chietKhau / 100),
+                ghiChu: '',
+              },
+            });
+          } else {
+            await this.prisma.tienLuongCaSi.update({
+              where: {
+                id: tienluongcasi.id,
+              },
+              data: {
+                tienShow: tienluongcasi.tienShow + tienShow,
+                luong:
+                  hangcasi.luongCB +
+                  (tienluongcasi.tienBaiHat +
+                    tienluongcasi.tienShow +
+                    tienShow) *
+                    (hang.chietKhau / 100),
+              },
+            });
+          }
+        }
       }
       return {
         success: true,
-        mess: 'cap nhat thanh cong',
+        mess: 'cập nhật thành công',
       };
     } catch (error) {
       return {
@@ -83,13 +130,32 @@ export class ShowdienService {
     }
   }
   async toCancel(id: string) {
-    await this.prisma.showDien.update({
+    const status = await this.prisma.showDien.findUnique({
       where: {
         id: id,
       },
-      data: {
-        tinhTrang: 'hủy',
-      },
     });
+    try {
+      if (status.tinhTrang == 'chưa xác nhận') {
+        await this.prisma.showDien.update({
+          where: {
+            id: id,
+          },
+          data: {
+            tinhTrang: 'đã hủy',
+          },
+        });
+      }
+      return {
+        success: true,
+        mess: 'cập nhật thành công',
+      };
+    } catch (error) {
+      return {
+        success: false,
+        mess: 'thất bại',
+        err: error,
+      };
+    }
   }
 }

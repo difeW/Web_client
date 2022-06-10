@@ -23,16 +23,15 @@ export class MuaController {
     return this.mua.getmuaById(id);
   }
   @Post()
-  addHang(@Body() mua: MuaDto, @Body('gia', ParseIntPipe) gia: number) {
-    return this.mua.addmua(mua, gia);
+  addHang(@Body() mua: MuaDto) {
+    return this.mua.addmua(mua);
   }
   @Patch(':id')
   updateHang(
     @Body() mua: MuaDto,
-    @Body('gia', ParseIntPipe) gia: number,
     @Param('id') id: string,
   ) {
-    return this.mua.updatemua(mua, gia, id);
+    return this.mua.updatemua(mua, id);
   }
   @Delete(':id')
   deleteHang(@Param('id') id: string) {
