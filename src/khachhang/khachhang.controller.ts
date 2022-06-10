@@ -44,8 +44,8 @@ export class KhachhangController {
     return this.khachhang.deletekhachHang(id);
   }
 
-  @Post('/khachhang')
-  getListMusic(@Body('maKH') id: string) {
+  @Get('/baihat/:id')
+  getListMusic(@Param('maKH') id: string) {
     return this.khachhang.getListMusic(id);
   }
 }

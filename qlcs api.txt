@@ -144,6 +144,3 @@ dto :{
 /casishow/:id (delete)
 
 
-------------
-thong so tu dong
-showdien: chiphi
