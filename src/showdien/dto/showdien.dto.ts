@@ -11,4 +11,6 @@ export class ShowDienDto {
   ngayKetThuc: string;
   @IsString()
   ngayDatShow: string;
+  @IsString()
+  maKH: string;
 }

@@ -34,4 +34,5 @@ export class TienluongcasiController {
   deleteHang(@Param('id') id: string) {
     return this.luong.deletetienLuongCaSi(id);
   }
+  
 }

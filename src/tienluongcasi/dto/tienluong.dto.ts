@@ -20,4 +20,6 @@ export class TienLuongDto {
   @IsInt()
   @Transform(({ value }) => parseInt(value))
   luong: number;
+  @IsString()
+  maCS: string;
 }

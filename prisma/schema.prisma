@@ -15,7 +15,7 @@ model KhachHang {
   matKhau String?
   email String? 
   sdt String?
-  ngaySinh String
+  ngaySinh String?
   diaChi String?
   doanhThu Int?
 }
@@ -26,7 +26,7 @@ model NhanVien{
   matKhau String
   email String ?
   sdt String?
-  ngaySinh String
+  ngaySinh String?
   diaChi String?
   cmnd String?
   gioiTinh String?
@@ -79,6 +79,7 @@ model showDien{
   tinhTrang String
   chiPhi Int
   ngayDatShow String
+  maKH String
 }
 model CaSiTrongShow{
   id String @id @default(auto()) @map("_id") @db.ObjectId
@@ -97,4 +98,5 @@ model TienLuongCaSi{
   tienBaiHat Int
   luong Int
   tinhTrang String
+  maCS String
 }
