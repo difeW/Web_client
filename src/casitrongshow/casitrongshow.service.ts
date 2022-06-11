@@ -6,14 +6,50 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class CasitrongshowService {
   constructor(private prisma: PrismaService) {}
   async getAllcaSiTrongShow() {
-    return await this.prisma.caSiTrongShow.findMany();
+    const casishow = await this.prisma.caSiTrongShow.findMany();
+    let res = [];
+    console.log(casishow);
+    for await (const css of casishow) {
+      console.log('css', css);
+      const cs = await this.prisma.casi.findUnique({
+        where: {
+          id: css.maCS,
+        },
+      });
+      const s = await this.prisma.showDien.findUnique({
+        where: {
+          id: css.maShow,
+        },
+      });
+      res.push({
+        id: css.id,
+        maCS: cs.hoTen,
+        maShow: s.tenShow,
+      });
+    }
+    return res;
   }
   async getcaSiTrongShowById(id: string) {
-    return await this.prisma.caSiTrongShow.findUnique({
+    const css = await this.prisma.caSiTrongShow.findUnique({
       where: {
         id: id,
       },
     });
+    const cs = await this.prisma.casi.findUnique({
+      where: {
+        id: css.maCS,
+      },
+    });
+    const s = await this.prisma.showDien.findUnique({
+      where: {
+        id: css.maShow,
+      },
+    });
+    return {
+      id: css.id,
+      maCS: cs.hoTen,
+      maShow: s.tenShow,
+    };
   }
 
   async addcaSiTrongShow(luong: caSiShowDto) {

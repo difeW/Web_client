@@ -15,6 +15,7 @@ export class NhanvienDto {
   ngaySinh: string;
   @IsString()
   diaChi: string;
+  @IsString()
   cmnd: string;
   @IsString()
   gioiTinh: string;

@@ -6,14 +6,53 @@ import { Injectable } from '@nestjs/common';
 export class ShowdienService {
   constructor(private prisma: PrismaService) {}
   async getAllShow() {
-    return await this.prisma.showDien.findMany();
+    const show = await this.prisma.showDien.findMany();
+    let res = [];
+    for await (const s of show) {
+      console.log('s', s);
+      const kh = await this.prisma.khachHang.findUnique({
+        where: {
+          id: s.maKH,
+        },
+      });
+      res.push({
+        id: s.id,
+        maKH: kh.taiKhoan,
+        tenShow: s.tenShow,
+        ngayBatDau: s.ngayBatDau,
+        diaDiem: s.diaDiem,
+        ghiChu: s.ghiChu,
+        ngayKetThuc: s.ngayKetThuc,
+        tinhTrang: s.tinhTrang,
+        chiPhi: s.chiPhi,
+        ngayDatShow: s.ngayDatShow,
+      });
+    }
+    return res;
   }
   async getShowById(id: string) {
-    return await this.prisma.showDien.findUnique({
+    const s = await this.prisma.showDien.findUnique({
       where: {
         id: id,
       },
     });
+    const kh = await this.prisma.khachHang.findUnique({
+      where: {
+        id: s.maKH,
+      },
+    });
+    return {
+      id: s.id,
+      maKH: kh.taiKhoan,
+      tenShow: s.tenShow,
+      ngayBatDau: s.ngayBatDau,
+      diaDiem: s.diaDiem,
+      ghiChu: s.ghiChu,
+      ngayKetThuc: s.ngayKetThuc,
+      tinhTrang: s.tinhTrang,
+      chiPhi: s.chiPhi,
+      ngayDatShow: s.ngayDatShow,
+    };
   }
 
   async addShow(show: ShowDienDto, chiPhi: number) {
@@ -77,6 +116,11 @@ export class ShowdienService {
               id: hangcasi.maHang,
             },
           });
+          const khachhang = await this.prisma.khachHang.findUnique({
+            where: {
+              id: status.maKH,
+            },
+          });
           const tienShow = hang.giaMoiShow;
           const thang = new Date(status.ngayBatDau).getMonth();
           const nam = new Date(status.ngayBatDau).getFullYear();
@@ -85,6 +129,14 @@ export class ShowdienService {
               maCS: casi.maCS,
               thangGhiNhan: thang,
               namGhiNhan: nam,
+            },
+          });
+          await this.prisma.khachHang.update({
+            where: {
+              id: status.maKH,
+            },
+            data: {
+              doanhThu: khachhang.doanhThu + tienShow,
             },
           });
           if (!tienluongcasi) {

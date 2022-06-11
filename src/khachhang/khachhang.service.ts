@@ -22,7 +22,7 @@ export class KhachhangService {
       };
     } else {
       const user = await this.prisma.khachHang.create({
-        data: { taiKhoan: dto.taiKhoan, matKhau: hash },
+        data: { taiKhoan: dto.taiKhoan, matKhau: hash, doanhThu: 0 },
       });
       return {
         success: true,

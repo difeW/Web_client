@@ -33,7 +33,7 @@ dto: {
   hinhAnh: string;
   mp4: string;
   maCS: string;
- gia: int	
+  gia: int	
 }
 /baihat (get)
 /baihat/:id (get)
@@ -78,19 +78,20 @@ dto:{
 /khachhang (get)
 /khachhang/:id (get)
 /khachhang (post {dto} )
-/khachhang/:id (update {dto})
+/khachhang/:id (patch {dto})
 /khachhang/:id (delete)
 /khachhang/baihat/:id (get) san pham nao da mua 
 ----------------------------------------------
-6.shodien 
+6.showdien 
 dto: {
   ngayBatDau: string;
   diaDiem: string;
   ghiChu: string;
   ngayKetThuc: string;
   tinhTrang: string;
-  ngayDatShow: string;
   chiPhi : int
+  maKH: string;
+  tenShow: string;
 }
 /showdien (get)
 /showdien/:id (get)
@@ -102,10 +103,8 @@ dto: {
 ----------------------------------------------
 7.mua 
 dto :{
-  ngayMua: string;
-  maKh: string;
+  maKH: string;
   maBH: string;
-  gia : int;
 }
 /mua (get)
 /mua/:id (get)
@@ -116,12 +115,12 @@ dto :{
 8.tienluongcasi
 dto :{
   ghiChu: string;
-  tinhTrang: string;
   thangGhiNhan: int;
   namGhiNhan: int;
   tienShow: int;
   tienBaiHat: int;
   luong: int;
+  maCS: string;
 }
 /luong (get)
 /luong/:id (get)
@@ -133,9 +132,6 @@ dto :{
 dto :{
   maShow: string;
   maCS: string;
-  thuTu: int;
-  tinhTrang: string;
-  ghiChu: string;
 }
 /casishow (get)
 /casishow/:id (get)
