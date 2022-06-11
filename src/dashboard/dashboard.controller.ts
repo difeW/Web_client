@@ -22,4 +22,15 @@ export class DashboardController {
   getCaSi() {
     return this.casishow.getSinger();
   }
+
+  //doanh thu theo thang
+  @Get('topCasi')
+  getTopCaSi() {
+    return this.casishow.getTopCaSi();
+  }
+
+  @Get('nam')
+  getDoanhThuNam() {
+    return this.casishow.getdoanhthunam();
+  }
 }

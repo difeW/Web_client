@@ -145,5 +145,5 @@ dto :{
 /dashboard/khachhang (get)
 /dashboard/baihat (get)
 /dashboard/casi (get)
-
+/dashboard/nam (get)
 
