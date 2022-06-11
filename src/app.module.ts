@@ -11,6 +11,7 @@ import { ShowdienModule } from './showdien/showdien.module';
 import { MuaModule } from './mua/mua.module';
 import { TienluongcasiModule } from './tienluongcasi/tienluongcasi.module';
 import { CasitrongshowModule } from './casitrongshow/casitrongshow.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { CasitrongshowModule } from './casitrongshow/casitrongshow.module';
     MuaModule,
     TienluongcasiModule,
     CasitrongshowModule,
+    DashboardModule,
   ],
 })
 export class AppModule {}

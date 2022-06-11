@@ -139,5 +139,11 @@ dto :{
 /casishow (post {dto} )
 /casishow/:id (update {dto})
 /casishow/:id (delete)
+----------------------------------------------
+10.dashboard
+/dashboard/doanhthu (get)
+/dashboard/khachhang (get)
+/dashboard/baihat (get)
+/dashboard/casi (get)
 
 
