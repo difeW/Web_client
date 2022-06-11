@@ -8,9 +8,9 @@ export class CasitrongshowService {
   async getAllcaSiTrongShow() {
     const casishow = await this.prisma.caSiTrongShow.findMany();
     let res = [];
-    console.log(casishow);
+ 
     for await (const css of casishow) {
-      console.log('css', css);
+   
       const cs = await this.prisma.casi.findUnique({
         where: {
           id: css.maCS,
@@ -50,6 +50,34 @@ export class CasitrongshowService {
       maCS: cs.hoTen,
       maShow: s.tenShow,
     };
+  }
+
+  async getCasiTrongShow(mashow: string) {
+    const show = await this.prisma.caSiTrongShow.findMany({
+      where: {
+        maShow: mashow,
+      },
+    });
+
+    let res = [];
+    for await (const s of show) {
+      const casi = await this.prisma.casi.findUnique({
+        where: {
+          id: s.maCS,
+        },
+      });
+      const hang = await this.prisma.hang.findUnique({
+        where: {
+          id: casi.maHang,
+        },
+      });
+      res.push({
+        maCS : s.maCS,
+        hoTen: casi.hoTen,
+        giaMoiShow: hang.giaMoiShow,
+      });
+    }
+    return res;
   }
 
   async addcaSiTrongShow(luong: caSiShowDto) {

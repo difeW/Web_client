@@ -123,7 +123,7 @@ export class KhachhangService {
         DaMua: false,
       });
     }
-    console.log(khachhang, baihatcus);
+ 
 
     for await (const kh of khachhang) {
       for await (const bh of baihatcus) {

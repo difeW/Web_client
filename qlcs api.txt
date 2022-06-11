@@ -135,6 +135,7 @@ dto :{
 }
 /casishow (get)
 /casishow/:id (get)
+/casishow/casi/:id (get) lay ca si trong 1 show
 /casishow (post {dto} )
 /casishow/:id (update {dto})
 /casishow/:id (delete)

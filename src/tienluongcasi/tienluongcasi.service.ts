@@ -6,14 +6,48 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class TienluongcasiService {
   constructor(private prisma: PrismaService) {}
   async getAlltienLuongCaSi() {
-    return await this.prisma.tienLuongCaSi.findMany();
+    const luong = await this.prisma.tienLuongCaSi.findMany();
+    let res = [];
+    for await (const l of luong) {
+      const casi = await this.prisma.casi.findUnique({
+        where: {
+          id: l.maCS,
+        },
+      });
+      res.push({
+        id: l.id,
+        maCS: casi.hoTen,
+        thangGhiNhan: l.thangGhiNhan,
+        namGhiNhan: l.namGhiNhan,
+        tienShow: l.tienShow,
+        ghiChu: l.ghiChu,
+        tienBaiHat: l.tienBaiHat,
+        luong: l.luong,
+      });
+    }
+    return res;
   }
   async gettienLuongCaSiById(id: string) {
-    return await this.prisma.tienLuongCaSi.findUnique({
+    const l = await this.prisma.tienLuongCaSi.findUnique({
       where: {
         id: id,
       },
     });
+    const casi = await this.prisma.casi.findUnique({
+      where: {
+        id: l.maCS,
+      },
+    });
+    return {
+      id: l.id,
+      maCS: casi.hoTen,
+      thangGhiNhan: l.thangGhiNhan,
+      namGhiNhan: l.namGhiNhan,
+      tienShow: l.tienShow,
+      ghiChu: l.ghiChu,
+      tienBaiHat: l.tienBaiHat,
+      luong: l.luong,
+    };
   }
 
   async addtienLuongCaSi(luong: TienLuongDto) {

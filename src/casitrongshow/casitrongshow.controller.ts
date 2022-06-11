@@ -22,6 +22,10 @@ export class CasitrongshowController {
   getHangById(@Param('id') id: string) {
     return this.casishow.getcaSiTrongShowById(id);
   }
+  @Get('casi/:id')
+  getCasiTrongShow(@Param('id') id: string) {
+    return this.casishow.getCasiTrongShow(id);
+  }
   @Post()
   addHang(@Body() casi: caSiShowDto) {
     return this.casishow.addcaSiTrongShow(casi);

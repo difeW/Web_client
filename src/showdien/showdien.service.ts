@@ -9,7 +9,7 @@ export class ShowdienService {
     const show = await this.prisma.showDien.findMany();
     let res = [];
     for await (const s of show) {
-      console.log('s', s);
+    
       const kh = await this.prisma.khachHang.findUnique({
         where: {
           id: s.maKH,
