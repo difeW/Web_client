@@ -43,7 +43,7 @@ export class ShowdienService {
     });
     return {
       id: s.id,
-      maKH: kh.taiKhoan,
+      maKH: kh.id,
       tenShow: s.tenShow,
       ngayBatDau: s.ngayBatDau,
       diaDiem: s.diaDiem,

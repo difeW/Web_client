@@ -50,7 +50,7 @@ export class BaihatService {
       luotView: bh.luotView,
       luotMua: bh.luotMua,
       gia: bh.gia,
-      maCS: casi.hoTen,
+      maCS: casi.id,
     };
   }
 
